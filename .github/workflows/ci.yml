@@ -134,6 +134,10 @@ jobs:
       - name: regenerate the opcode table and check it is unchanged
         run: |
           dotnet run --project tools/gen-opcodes > /tmp/table.rs
+          # The committed copy is rustfmt-formatted, as every file in src/ is,
+          # while the generator emits unformatted Rust. Format before diffing
+          # so this compares content rather than line wrapping.
+          rustfmt --edition 2024 /tmp/table.rs
           diff -u src/il/table.rs /tmp/table.rs
 
   fuzz:

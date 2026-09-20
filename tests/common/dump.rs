@@ -584,10 +584,8 @@ fn render_operand(
             let text = metadata.user_strings().get(*token).expect("#US entry");
             quote(text.code_units())
         }
-        operand => match operand.token() {
-            Some(token) => token_or_dash(names, token),
-            None => return None,
-        },
+        // Every remaining operand kind carries a token.
+        operand => token_or_dash(names, operand.token()?),
     })
 }
 
