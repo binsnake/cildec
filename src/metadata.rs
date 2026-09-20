@@ -435,11 +435,9 @@ mod tests {
     #[test]
     fn a_stream_running_past_the_end_is_clamped() {
         let mut bytes = build(&[("#~", &empty_table_stream()), ("#Blob", b"\0")]);
-        let len = bytes.len();
-        // Enlarge the last stream size field beyond the region.
-        let size_pos = len - 1 - 1;
-        let _ = size_pos;
-        // Rebuild by hand: patch the #Blob declared size to a huge value.
+        // Patch the declared size of `#Blob` to run past the metadata region.
+        // The directory entry is offset, size, then the NUL-padded name, so
+        // the size field is the four bytes before the name.
         let pattern = b"#Blob\0\0\0";
         let dir_pos = bytes.windows(8).position(|w| w == pattern).unwrap();
         bytes[dir_pos - 4..dir_pos].copy_from_slice(&0xFFFF_0000u32.to_le_bytes());

@@ -3,8 +3,8 @@
 //! `tools/gen-golden` dumps a fixture with System.Reflection.Metadata and the
 //! runtime opcode table; this test dumps the same fixture with cildec in the
 //! same format and compares line by line. A difference is either a bug here or
-//! a deliberate change that must be explained in `fixtures/README.md` and the
-//! golden file regenerated.
+//! a deliberate change, in which case regenerate the golden file with
+//! `fixtures/build.sh` and say why in the commit.
 
 mod common;
 

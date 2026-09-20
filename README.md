@@ -120,7 +120,7 @@ compiler output.
 - An exhaustive opcode test that walks every encoding `0x00..=0xFF` and
   `0xFE 0x00..=0xFF` and checks size and round-trip.
 - **Golden tests** comparing checked-in fixtures field by field against dumps
-  produced by System.Reflection.Metadata. See [`fixtures/README.md`](fixtures/README.md).
+  produced by System.Reflection.Metadata.
 - **Differential tests** running that same comparison against every .NET
   assembly on the machine — shared frameworks of every installed version,
   reference packs, the .NET Framework directories back to 1.x, and the GAC.
@@ -151,6 +151,57 @@ The differential test skips itself when no .NET SDK is installed, and by
 default compares only the newest shared framework; `CILDEC_DIFF_ALL=1` compares
 every installed version, and `CILDEC_DIFF_DIR` points it at any other directory
 of assemblies.
+
+## Development
+
+```bash
+cargo fmt --all -- --check
+cargo clippy --all-targets --all-features -- -D warnings
+RUSTDOCFLAGS="-D warnings" cargo doc --no-deps --all-features
+cargo test --all-features && cargo test --release
+cargo build --no-default-features
+cargo +1.85 check --all-targets            # the MSRV
+cargo check --target wasm32-unknown-unknown
+cargo tree --no-default-features --edges normal   # must list this crate alone
+```
+
+`src/il/table.rs` is generated from the runtime's own opcode table and must not
+be hand-edited; CI checks that it regenerates identically. `no.` is the one
+opcode absent from `System.Reflection.Emit.OpCodes`, so the generator injects
+it from ECMA-335 III.2.2.
+
+```bash
+dotnet run --project tools/gen-opcodes > src/il/table.rs
+fixtures/build.sh                       # rebuild fixtures and golden dumps
+fuzz/run-all.sh 300                     # a short fuzzing session
+```
+
+The fixtures are committed binaries built by the .NET SDK pinned in
+`global.json`, with `Deterministic=true` so a rebuild from the same source and
+SDK is byte-identical. A different SDK patch level usually changes the output;
+regenerate the golden dumps in the same commit when that happens.
+
+The dump format can only carry what *both* readers can express. Two gaps are
+marked in `tests/common/dump.rs`: System.Reflection.Metadata cannot distinguish
+a missing `ClassLayout` row from one of zeros, nor a missing `FieldRVA` row
+from one that says zero, so degenerate rows are skipped on both sides. Three
+tables (`FieldMarshal`, `MethodSemantics`, `NestedClass`) have no row
+enumeration there and are reached through the members that own them.
+
+The fuzz corpora are committed as one `fuzz/corpus/<target>.pack` per target —
+a repeated `[u32 little-endian length][bytes]`, read by `tests/corpus.rs`
+without any dependency. `fuzz/run-all.sh` unpacks before and repacks after. On
+Windows the AddressSanitizer runtime libFuzzer links against is not on `PATH`;
+that script adds the Visual Studio copy when it finds one.
+
+Anything that trips a fuzz target lands in `fuzz/artifacts/<target>/`. Commit
+it: `tests/corpus.rs` replays that directory on stable, so a committed crash
+becomes a permanent regression test needing no nightly.
+
+House rules for the parser: no `unsafe`, no reachable panic from the public API
+on any input, never allocate on a declared count before checking it against the
+bytes that remain, every loop over input makes progress, and no `HashMap`
+iteration in a path that affects output.
 
 ## License
 

@@ -1,7 +1,7 @@
 # Rebuilds the fixtures and their golden dumps. Run from anywhere.
 #
-# The .NET SDK version is pinned by global.json; see fixtures/README.md for why
-# a different patch level changes the output.
+# The .NET SDK version is pinned by global.json. A different patch level
+# usually changes the output, so regenerate the golden dumps with it.
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
