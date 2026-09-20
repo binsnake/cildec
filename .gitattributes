@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.dll binary
+*.png binary
+fuzz/corpus/** binary
+fuzz/artifacts/** binary

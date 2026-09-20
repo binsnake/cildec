@@ -1,0 +1,754 @@
+image pe32plus=false machine=0x014c
+cli runtime=2.5 ilonly=true bit32required=false bit32preferred=false
+metadata version=v4.0.30319
+tablerows Module=1
+tablerows TypeRef=32
+tablerows TypeDef=19
+tablerows Field=20
+tablerows MethodDef=42
+tablerows Param=36
+tablerows InterfaceImpl=1
+tablerows MemberRef=33
+tablerows Constant=4
+tablerows CustomAttribute=58
+tablerows FieldMarshal=2
+tablerows DeclSecurity=1
+tablerows ClassLayout=3
+tablerows FieldLayout=3
+tablerows StandAloneSig=8
+tablerows EventMap=1
+tablerows Event=1
+tablerows PropertyMap=5
+tablerows Property=7
+tablerows MethodSemantics=11
+tablerows MethodImpl=2
+tablerows ModuleRef=1
+tablerows TypeSpec=9
+tablerows ImplMap=2
+tablerows FieldRva=1
+tablerows Assembly=1
+tablerows AssemblyRef=1
+tablerows NestedClass=3
+tablerows GenericParam=5
+tablerows MethodSpec=2
+tablerows GenericParamConstraint=7
+type 1 <Module> flags=0x00000000 extends=-
+type 2 Microsoft.CodeAnalysis.EmbeddedAttribute flags=0x00100100 extends=[netstandard]System.Attribute
+  method 1 .ctor sig=instance void () flags=0x1886 implflags=0x0000 rva=0x00002050
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ret
+type 3 System.Runtime.CompilerServices.NullableAttribute flags=0x00100100 extends=[netstandard]System.Attribute
+  field 1 NullableFlags sig=uint8[] flags=0x0026
+  method 2 .ctor sig=instance void (uint8) flags=0x1886 implflags=0x0000 rva=0x00002058
+    maxstack 8 initlocals=false codesize=23
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ldarg.0
+    il IL_0007 ldc.i4.1
+    il IL_0008 newarr [netstandard]System.Byte
+    il IL_000d dup
+    il IL_000e ldc.i4.0
+    il IL_000f ldarg.1
+    il IL_0010 stelem.i1
+    il IL_0011 stfld System.Runtime.CompilerServices.NullableAttribute::NullableFlags
+    il IL_0016 ret
+  method 3 .ctor sig=instance void (uint8[]) flags=0x1886 implflags=0x0000 rva=0x00002070
+    maxstack 8 initlocals=false codesize=14
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ldarg.0
+    il IL_0007 ldarg.1
+    il IL_0008 stfld System.Runtime.CompilerServices.NullableAttribute::NullableFlags
+    il IL_000d ret
+type 4 System.Runtime.CompilerServices.NullableContextAttribute flags=0x00100100 extends=[netstandard]System.Attribute
+  field 2 Flag sig=uint8 flags=0x0026
+  method 4 .ctor sig=instance void (uint8) flags=0x1886 implflags=0x0000 rva=0x0000207f
+    maxstack 8 initlocals=false codesize=14
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ldarg.0
+    il IL_0007 ldarg.1
+    il IL_0008 stfld System.Runtime.CompilerServices.NullableContextAttribute::Flag
+    il IL_000d ret
+type 5 System.Runtime.CompilerServices.RefSafetyRulesAttribute flags=0x00100100 extends=[netstandard]System.Attribute
+  field 3 Version sig=int32 flags=0x0026
+  method 5 .ctor sig=instance void (int32) flags=0x1886 implflags=0x0000 rva=0x0000208e
+    maxstack 8 initlocals=false codesize=14
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ldarg.0
+    il IL_0007 ldarg.1
+    il IL_0008 stfld System.Runtime.CompilerServices.RefSafetyRulesAttribute::Version
+    il IL_000d ret
+type 6 Fixtures.FixtureMarkerAttribute flags=0x00100101 extends=[netstandard]System.Attribute
+  field 4 <Note>k__BackingField sig=string flags=0x0021
+  field 5 <Rank>k__BackingField sig=int32 flags=0x0001
+  method 6 .ctor sig=instance void (string) flags=0x1886 implflags=0x0000 rva=0x0000209d
+    maxstack 8 initlocals=false codesize=14
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Attribute::.ctor
+    il IL_0006 ldarg.0
+    il IL_0007 ldarg.1
+    il IL_0008 stfld Fixtures.FixtureMarkerAttribute::<Note>k__BackingField
+    il IL_000d ret
+  method 7 get_Note sig=instance string () flags=0x0886 implflags=0x0000 rva=0x000020ac
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld Fixtures.FixtureMarkerAttribute::<Note>k__BackingField
+    il IL_0006 ret
+  method 8 get_Rank sig=instance int32 () flags=0x0886 implflags=0x0000 rva=0x000020b4
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld Fixtures.FixtureMarkerAttribute::<Rank>k__BackingField
+    il IL_0006 ret
+  method 9 set_Rank sig=instance void (int32) flags=0x0886 implflags=0x0000 rva=0x000020bc
+    maxstack 8 initlocals=false codesize=8
+    il IL_0000 ldarg.0
+    il IL_0001 ldarg.1
+    il IL_0002 stfld Fixtures.FixtureMarkerAttribute::<Rank>k__BackingField
+    il IL_0007 ret
+  property 1 "Note" sig=instance string () flags=0x0000 getter=0x06000007 setter=0x00000000
+  property 2 "Rank" sig=instance int32 () flags=0x0000 getter=0x06000008 setter=0x06000009
+type 7 Fixtures.Container`1 flags=0x00100001 extends=[netstandard]System.Object
+  field 6 items sig=!0[] flags=0x0001
+  field 7 <Count>k__BackingField sig=int32 flags=0x0001
+  field 8 Added sig=class [netstandard]System.EventHandler`1<!0> flags=0x0001
+  method 10 get_Count sig=instance int32 () flags=0x0886 implflags=0x0000 rva=0x000020c5
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld class Fixtures.Container`1<!0>::<Count>k__BackingField
+    il IL_0006 ret
+  method 11 set_Count sig=instance void (int32) flags=0x0881 implflags=0x0000 rva=0x000020cd
+    maxstack 8 initlocals=false codesize=8
+    il IL_0000 ldarg.0
+    il IL_0001 ldarg.1
+    il IL_0002 stfld class Fixtures.Container`1<!0>::<Count>k__BackingField
+    il IL_0007 ret
+  method 12 add_Added sig=instance void (class [netstandard]System.EventHandler`1<!0>) flags=0x0886 implflags=0x0000 rva=0x000020d8
+    maxstack 3 initlocals=true codesize=41
+    local 0 class [netstandard]System.EventHandler`1<!0>
+    local 1 class [netstandard]System.EventHandler`1<!0>
+    local 2 class [netstandard]System.EventHandler`1<!0>
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld class Fixtures.Container`1<!0>::Added
+    il IL_0006 stloc.0
+    il IL_0007 ldloc.0
+    il IL_0008 stloc.1
+    il IL_0009 ldloc.1
+    il IL_000a ldarg.1
+    il IL_000b call [netstandard]System.Delegate::Combine
+    il IL_0010 castclass class [netstandard]System.EventHandler`1<!0>
+    il IL_0015 stloc.2
+    il IL_0016 ldarg.0
+    il IL_0017 ldflda class Fixtures.Container`1<!0>::Added
+    il IL_001c ldloc.2
+    il IL_001d ldloc.1
+    il IL_001e call [netstandard]System.Threading.Interlocked::CompareExchange<class [netstandard]System.EventHandler`1<!0>>
+    il IL_0023 stloc.0
+    il IL_0024 ldloc.0
+    il IL_0025 ldloc.1
+    il IL_0026 bne.un.s IL_0007
+    il IL_0028 ret
+  method 13 remove_Added sig=instance void (class [netstandard]System.EventHandler`1<!0>) flags=0x0886 implflags=0x0000 rva=0x00002110
+    maxstack 3 initlocals=true codesize=41
+    local 0 class [netstandard]System.EventHandler`1<!0>
+    local 1 class [netstandard]System.EventHandler`1<!0>
+    local 2 class [netstandard]System.EventHandler`1<!0>
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld class Fixtures.Container`1<!0>::Added
+    il IL_0006 stloc.0
+    il IL_0007 ldloc.0
+    il IL_0008 stloc.1
+    il IL_0009 ldloc.1
+    il IL_000a ldarg.1
+    il IL_000b call [netstandard]System.Delegate::Remove
+    il IL_0010 castclass class [netstandard]System.EventHandler`1<!0>
+    il IL_0015 stloc.2
+    il IL_0016 ldarg.0
+    il IL_0017 ldflda class Fixtures.Container`1<!0>::Added
+    il IL_001c ldloc.2
+    il IL_001d ldloc.1
+    il IL_001e call [netstandard]System.Threading.Interlocked::CompareExchange<class [netstandard]System.EventHandler`1<!0>>
+    il IL_0023 stloc.0
+    il IL_0024 ldloc.0
+    il IL_0025 ldloc.1
+    il IL_0026 bne.un.s IL_0007
+    il IL_0028 ret
+  method 14 Add sig=instance void (!0) flags=0x0086 implflags=0x0000 rva=0x00002148
+    maxstack 4 initlocals=true codesize=85
+    local 0 int32
+    il IL_0000 ldarg.0
+    il IL_0001 call class Fixtures.Container`1<!0>::get_Count
+    il IL_0006 ldarg.0
+    il IL_0007 ldfld class Fixtures.Container`1<!0>::items
+    il IL_000c ldlen
+    il IL_000d conv.i4
+    il IL_000e bne.un.s IL_0025
+    il IL_0010 ldarg.0
+    il IL_0011 ldflda class Fixtures.Container`1<!0>::items
+    il IL_0016 ldarg.0
+    il IL_0017 ldfld class Fixtures.Container`1<!0>::items
+    il IL_001c ldlen
+    il IL_001d conv.i4
+    il IL_001e ldc.i4.2
+    il IL_001f mul
+    il IL_0020 call [netstandard]System.Array::Resize<!0>
+    il IL_0025 ldarg.0
+    il IL_0026 ldfld class Fixtures.Container`1<!0>::items
+    il IL_002b ldarg.0
+    il IL_002c call class Fixtures.Container`1<!0>::get_Count
+    il IL_0031 stloc.0
+    il IL_0032 ldarg.0
+    il IL_0033 ldloc.0
+    il IL_0034 ldc.i4.1
+    il IL_0035 add
+    il IL_0036 call class Fixtures.Container`1<!0>::set_Count
+    il IL_003b ldloc.0
+    il IL_003c ldarg.1
+    il IL_003d stelem !0
+    il IL_0042 ldarg.0
+    il IL_0043 ldfld class Fixtures.Container`1<!0>::Added
+    il IL_0048 dup
+    il IL_0049 brtrue.s IL_004d
+    il IL_004b pop
+    il IL_004c ret
+    il IL_004d ldarg.0
+    il IL_004e ldarg.1
+    il IL_004f callvirt class [netstandard]System.EventHandler`1<!0>::Invoke
+    il IL_0054 ret
+  method 15 Map sig=instance !!0 <1>(class [netstandard]System.Func`2<!0, !!0>, int32) flags=0x0086 implflags=0x0000 rva=0x000021a9
+    maxstack 8 initlocals=false codesize=19
+    il IL_0000 ldarg.1
+    il IL_0001 ldarg.0
+    il IL_0002 ldfld class Fixtures.Container`1<!0>::items
+    il IL_0007 ldarg.2
+    il IL_0008 ldelem !0
+    il IL_000d callvirt class [netstandard]System.Func`2<!0, !!0>::Invoke
+    il IL_0012 ret
+  method 16 .ctor sig=instance void () flags=0x1886 implflags=0x0000 rva=0x000021bd
+    maxstack 8 initlocals=false codesize=19
+    il IL_0000 ldarg.0
+    il IL_0001 ldc.i4.4
+    il IL_0002 newarr !0
+    il IL_0007 stfld class Fixtures.Container`1<!0>::items
+    il IL_000c ldarg.0
+    il IL_000d call [netstandard]System.Object::.ctor
+    il IL_0012 ret
+  property 3 "Count" sig=instance int32 () flags=0x0000 getter=0x0600000a setter=0x0600000b
+  event 1 "Added" type=0x1b000002 flags=0x0000 adder=0x0600000c remover=0x0600000d raiser=0x00000000
+type 8 Fixtures.Overlapped flags=0x00100111 extends=[netstandard]System.ValueType
+  layout size=16 pack=4
+  field 9 AsInt32 sig=int32 flags=0x0006 offset=0
+  field 10 AsSingle sig=float32 flags=0x0006 offset=0
+  field 11 Tail sig=int64 flags=0x0006 offset=8
+type 9 Fixtures.Packed flags=0x00100109 extends=[netstandard]System.ValueType
+  layout size=0 pack=1
+  field 12 Tag sig=uint8 flags=0x0006
+  field 13 Payload sig=int64 flags=0x0006
+type 10 Fixtures.Interop flags=0x00100181 extends=[netstandard]System.Object
+  method 17 GetTickCount64 sig=uint64 () flags=0x2096 implflags=0x0080 rva=0x00000000
+    pinvoke module=kernel32.dll name=GetTickCount64 flags=0x0140
+  method 18 GetEnvironmentVariableW sig=int32 (string, char[], int32) flags=0x2096 implflags=0x0080 rva=0x00000000
+    pinvoke module=kernel32.dll name=GetEnvironmentVariableW flags=0x0104
+type 11 Fixtures.Shapes flags=0x00100181 extends=[netstandard]System.Object
+  method 19 Apply sig=int32 (method int32 (int32), int32) flags=0x0096 implflags=0x0000 rva=0x000021d4
+    maxstack 2 initlocals=true codesize=10
+    local 0 method int32 (int32)
+    il IL_0000 ldarg.0
+    il IL_0001 stloc.0
+    il IL_0002 ldarg.1
+    il IL_0003 ldloc.0
+    il IL_0004 calli StandAloneSig[4]
+    il IL_0009 ret
+  method 20 Sum sig=int32 (int32[0...,0...]) flags=0x0096 implflags=0x0000 rva=0x000021ec
+    maxstack 4 initlocals=true codesize=51
+    local 0 int32
+    local 1 int32
+    local 2 int32
+    il IL_0000 ldc.i4.0
+    il IL_0001 stloc.0
+    il IL_0002 ldc.i4.0
+    il IL_0003 stloc.1
+    il IL_0004 br.s IL_0027
+    il IL_0006 ldc.i4.0
+    il IL_0007 stloc.2
+    il IL_0008 br.s IL_0019
+    il IL_000a ldloc.0
+    il IL_000b ldarg.0
+    il IL_000c ldloc.1
+    il IL_000d ldloc.2
+    il IL_000e call int32[0...,0...]::Get
+    il IL_0013 add
+    il IL_0014 stloc.0
+    il IL_0015 ldloc.2
+    il IL_0016 ldc.i4.1
+    il IL_0017 add
+    il IL_0018 stloc.2
+    il IL_0019 ldloc.2
+    il IL_001a ldarg.0
+    il IL_001b ldc.i4.1
+    il IL_001c callvirt [netstandard]System.Array::GetLength
+    il IL_0021 blt.s IL_000a
+    il IL_0023 ldloc.1
+    il IL_0024 ldc.i4.1
+    il IL_0025 add
+    il IL_0026 stloc.1
+    il IL_0027 ldloc.1
+    il IL_0028 ldarg.0
+    il IL_0029 ldc.i4.0
+    il IL_002a callvirt [netstandard]System.Array::GetLength
+    il IL_002f blt.s IL_0006
+    il IL_0031 ldloc.0
+    il IL_0032 ret
+  method 21 Swap sig=void (int32*, int32&) flags=0x0096 implflags=0x0000 rva=0x0000222c
+    maxstack 2 initlocals=true codesize=13
+    local 0 int32
+    local 1 int32
+    il IL_0000 ldarg.0
+    il IL_0001 ldarg.1
+    il IL_0002 ldind.i4
+    il IL_0003 stloc.0
+    il IL_0004 ldarg.0
+    il IL_0005 ldind.i4
+    il IL_0006 stloc.1
+    il IL_0007 ldloc.0
+    il IL_0008 stind.i4
+    il IL_0009 ldarg.1
+    il IL_000a ldloc.1
+    il IL_000b stind.i4
+    il IL_000c ret
+  method 22 FirstByte sig=int32 (uint8[]) flags=0x0096 implflags=0x0000 rva=0x00002248
+    maxstack 2 initlocals=true codesize=34
+    local 0 uint8*
+    local 1 uint8[] pinned
+    il IL_0000 ldarg.0
+    il IL_0001 dup
+    il IL_0002 stloc.1
+    il IL_0003 brfalse.s IL_000a
+    il IL_0005 ldloc.1
+    il IL_0006 ldlen
+    il IL_0007 conv.i4
+    il IL_0008 brtrue.s IL_000f
+    il IL_000a ldc.i4.0
+    il IL_000b conv.u
+    il IL_000c stloc.0
+    il IL_000d br.s IL_0018
+    il IL_000f ldloc.1
+    il IL_0010 ldc.i4.0
+    il IL_0011 ldelema [netstandard]System.Byte
+    il IL_0016 conv.u
+    il IL_0017 stloc.0
+    il IL_0018 ldloc.0
+    il IL_0019 ldc.i4.0
+    il IL_001a conv.u
+    il IL_001b beq.s IL_0020
+    il IL_001d ldloc.0
+    il IL_001e ldind.u1
+    il IL_001f ret
+    il IL_0020 ldc.i4.m1
+    il IL_0021 ret
+  method 23 get_Magic sig=valuetype [netstandard]System.ReadOnlySpan`1<uint8> () flags=0x0896 implflags=0x0000 rva=0x00002276
+    maxstack 8 initlocals=false codesize=12
+    il IL_0000 ldsflda <PrivateImplementationDetails>::3B5B3F10D270E202A89E8E3258C236AD27D1D4A473F746D6BEFCF0EC07E24B77
+    il IL_0005 ldc.i4.6
+    il IL_0006 newobj valuetype [netstandard]System.ReadOnlySpan`1<uint8>::.ctor
+    il IL_000b ret
+  property 4 "Magic" sig=valuetype [netstandard]System.ReadOnlySpan`1<uint8> () flags=0x0000 getter=0x06000017 setter=0x00000000
+type 12 Fixtures.Constants flags=0x00100181 extends=[netstandard]System.Object
+  method 24 Ladder sig=int32 (int32) flags=0x0096 implflags=0x0000 rva=0x00002284
+    maxstack 1 initlocals=true codesize=126
+    local 0 int32
+    il IL_0000 ldarg.0
+    il IL_0001 switch (IL_003c,IL_0040,IL_0044,IL_0048,IL_004c,IL_0050,IL_0054,IL_0058,IL_005c,IL_0060,IL_0064,IL_0069,IL_006e)
+    il IL_003a br.s IL_0076
+    il IL_003c ldc.i4.m1
+    il IL_003d stloc.0
+    il IL_003e br.s IL_007c
+    il IL_0040 ldc.i4.0
+    il IL_0041 stloc.0
+    il IL_0042 br.s IL_007c
+    il IL_0044 ldc.i4.1
+    il IL_0045 stloc.0
+    il IL_0046 br.s IL_007c
+    il IL_0048 ldc.i4.2
+    il IL_0049 stloc.0
+    il IL_004a br.s IL_007c
+    il IL_004c ldc.i4.3
+    il IL_004d stloc.0
+    il IL_004e br.s IL_007c
+    il IL_0050 ldc.i4.4
+    il IL_0051 stloc.0
+    il IL_0052 br.s IL_007c
+    il IL_0054 ldc.i4.5
+    il IL_0055 stloc.0
+    il IL_0056 br.s IL_007c
+    il IL_0058 ldc.i4.6
+    il IL_0059 stloc.0
+    il IL_005a br.s IL_007c
+    il IL_005c ldc.i4.7
+    il IL_005d stloc.0
+    il IL_005e br.s IL_007c
+    il IL_0060 ldc.i4.8
+    il IL_0061 stloc.0
+    il IL_0062 br.s IL_007c
+    il IL_0064 ldc.i4.s 9
+    il IL_0066 stloc.0
+    il IL_0067 br.s IL_007c
+    il IL_0069 ldc.i4.s 127
+    il IL_006b stloc.0
+    il IL_006c br.s IL_007c
+    il IL_006e ldc.i4 1000
+    il IL_0073 stloc.0
+    il IL_0074 br.s IL_007c
+    il IL_0076 ldc.i4 2147483647
+    il IL_007b stloc.0
+    il IL_007c ldloc.0
+    il IL_007d ret
+  method 25 Conversions sig=void (float64, int64&, uint32&, float32&) flags=0x0096 implflags=0x0000 rva=0x0000230e
+    maxstack 8 initlocals=false codesize=13
+    il IL_0000 ldarg.1
+    il IL_0001 ldarg.0
+    il IL_0002 conv.i8
+    il IL_0003 stind.i8
+    il IL_0004 ldarg.2
+    il IL_0005 ldarg.0
+    il IL_0006 conv.u4
+    il IL_0007 stind.i4
+    il IL_0008 ldarg.3
+    il IL_0009 ldarg.0
+    il IL_000a conv.r4
+    il IL_000b stind.r4
+    il IL_000c ret
+  method 26 CheckedNarrow sig=uint8 (int32) flags=0x0096 implflags=0x0000 rva=0x0000231c
+    maxstack 8 initlocals=false codesize=3
+    il IL_0000 ldarg.0
+    il IL_0001 conv.ovf.u1
+    il IL_0002 ret
+  method 27 CheckedNarrowUnsigned sig=int16 (uint32) flags=0x0096 implflags=0x0000 rva=0x00002320
+    maxstack 8 initlocals=false codesize=3
+    il IL_0000 ldarg.0
+    il IL_0001 conv.ovf.i2.un
+    il IL_0002 ret
+  method 28 Wide sig=valuetype [netstandard]System.ValueTuple`3<int64, float32, float64> () flags=0x0096 implflags=0x0000 rva=0x00002324
+    maxstack 8 initlocals=false codesize=29
+    il IL_0000 ldc.i8 81985529216486895
+    il IL_0009 ldc.r4 0x3fc00000
+    il IL_000e ldc.r8 0x400921fb54442d18
+    il IL_0017 newobj valuetype [netstandard]System.ValueTuple`3<int64, float32, float64>::.ctor
+    il IL_001c ret
+  method 29 Greeting sig=string (bool) flags=0x0096 implflags=0x0000 rva=0x00002342
+    maxstack 8 initlocals=false codesize=15
+    il IL_0000 ldarg.0
+    il IL_0001 brtrue.s IL_0009
+    il IL_0003 ldstr "hi \u00e9\u4e2d"
+    il IL_0008 ret
+    il IL_0009 ldstr "Good evening"
+    il IL_000e ret
+type 13 Fixtures.Flow flags=0x00100181 extends=[netstandard]System.Object
+  method 30 Dense sig=string (int32) flags=0x0096 implflags=0x0000 rva=0x00002354
+    maxstack 1 initlocals=true codesize=84
+    il IL_0000 ldarg.0
+    il IL_0001 switch (IL_0024,IL_002a,IL_0030,IL_0036,IL_003c,IL_0042,IL_0048)
+    il IL_0022 br.s IL_004e
+    il IL_0024 ldstr "zero"
+    il IL_0029 ret
+    il IL_002a ldstr "one"
+    il IL_002f ret
+    il IL_0030 ldstr "two"
+    il IL_0035 ret
+    il IL_0036 ldstr "three"
+    il IL_003b ret
+    il IL_003c ldstr "four"
+    il IL_0041 ret
+    il IL_0042 ldstr "five"
+    il IL_0047 ret
+    il IL_0048 ldstr "six"
+    il IL_004d ret
+    il IL_004e ldstr "many"
+    il IL_0053 ret
+  method 31 NestedFinally sig=int32 (int32) flags=0x0096 implflags=0x0000 rva=0x000023b4
+    maxstack 2 initlocals=true codesize=37
+    local 0 int32
+    local 1 int32
+    il IL_0000 ldarg.0
+    il IL_0001 stloc.0
+    il IL_0002 ldloc.0
+    il IL_0003 ldc.i4.1
+    il IL_0004 add
+    il IL_0005 stloc.0
+    il IL_0006 ldloc.0
+    il IL_0007 ldc.i4.s 100
+    il IL_0009 ble.s IL_000f
+    il IL_000b ldloc.0
+    il IL_000c stloc.1
+    il IL_000d leave.s IL_0023
+    il IL_000f leave.s IL_0016
+    il IL_0011 ldloc.0
+    il IL_0012 ldc.i4.2
+    il IL_0013 mul
+    il IL_0014 stloc.0
+    il IL_0015 endfinally
+    il IL_0016 ldloc.0
+    il IL_0017 ldc.i4.3
+    il IL_0018 add
+    il IL_0019 stloc.0
+    il IL_001a leave.s IL_0021
+    il IL_001c ldloc.0
+    il IL_001d ldc.i4.1
+    il IL_001e sub
+    il IL_001f stloc.0
+    il IL_0020 endfinally
+    il IL_0021 ldloc.0
+    il IL_0022 ret
+    il IL_0023 ldloc.1
+    il IL_0024 ret
+    eh Finally try=IL_0002..IL_0011 handler=IL_0011..IL_0016
+    eh Finally try=IL_0002..IL_001c handler=IL_001c..IL_0021
+  method 32 Filtered sig=string (int32) flags=0x0096 implflags=0x0000 rva=0x00002404
+    maxstack 2 initlocals=true codesize=87
+    local 0 string
+    il IL_0000 ldarg.0
+    il IL_0001 ldc.i4.0
+    il IL_0002 bge.s IL_000f
+    il IL_0004 ldstr "code"
+    il IL_0009 newobj [netstandard]System.ArgumentOutOfRangeException::.ctor
+    il IL_000e throw
+    il IL_000f ldstr "ok"
+    il IL_0014 stloc.0
+    il IL_0015 leave.s IL_0055
+    il IL_0017 isinst [netstandard]System.ArgumentException
+    il IL_001c dup
+    il IL_001d brtrue.s IL_0023
+    il IL_001f pop
+    il IL_0020 ldc.i4.0
+    il IL_0021 br.s IL_0035
+    il IL_0023 callvirt [netstandard]System.ArgumentException::get_ParamName
+    il IL_0028 ldstr "code"
+    il IL_002d call [netstandard]System.String::op_Equality
+    il IL_0032 ldc.i4.0
+    il IL_0033 cgt.un
+    il IL_0035 endfilter
+    il IL_0037 pop
+    il IL_0038 ldstr "filtered"
+    il IL_003d stloc.0
+    il IL_003e leave.s IL_0055
+    il IL_0040 pop
+    il IL_0041 ldstr "caught"
+    il IL_0046 stloc.0
+    il IL_0047 leave.s IL_0055
+    il IL_0049 ldarg.0
+    il IL_004a box [netstandard]System.Int32
+    il IL_004f call [netstandard]System.GC::KeepAlive
+    il IL_0054 endfinally
+    il IL_0055 ldloc.0
+    il IL_0056 ret
+    eh Filter try=IL_0000..IL_0017 handler=IL_0037..IL_0040 filter=IL_0017
+    eh Catch try=IL_0000..IL_0017 handler=IL_0040..IL_0049 type=[netstandard]System.Exception
+    eh Finally try=IL_0000..IL_0049 handler=IL_0049..IL_0055
+  method 33 Describe sig=string <1>(!!0) flags=0x0096 implflags=0x0000 rva=0x00002490
+    maxstack 8 initlocals=false codesize=23
+    il IL_0000 ldarga.s 0
+    il IL_0002 constrained. !!0
+    il IL_0008 callvirt [netstandard]System.Object::ToString
+    il IL_000d dup
+    il IL_000e brtrue.s IL_0016
+    il IL_0010 pop
+    il IL_0011 ldsfld [netstandard]System.String::Empty
+    il IL_0016 ret
+  method 34 VolatileRead sig=int32 (int32&) flags=0x0096 implflags=0x0000 rva=0x000024a8
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 call [netstandard]System.Threading.Volatile::Read
+    il IL_0006 ret
+type 14 Fixtures.INamed flags=0x001000a1 extends=-
+  method 35 get_Name sig=instance string () flags=0x0dc6 implflags=0x0000 rva=0x00000000
+  method 36 Rename sig=instance void (string) flags=0x05c6 implflags=0x0000 rva=0x00000000
+  property 5 "Name" sig=instance string () flags=0x0000 getter=0x06000023 setter=0x00000000
+type 15 Fixtures.Widget flags=0x00100101 extends=[netstandard]System.Object
+  field 14 name sig=string flags=0x0001
+  field 15 Version sig=int32 flags=0x8056
+  method 37 Fixtures.INamed.get_Name sig=instance string () flags=0x09e1 implflags=0x0000 rva=0x000024b0
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld Fixtures.Widget::name
+    il IL_0006 ret
+  method 38 Fixtures.INamed.Rename sig=instance void (string) flags=0x01e1 implflags=0x0000 rva=0x000024b8
+    maxstack 8 initlocals=false codesize=8
+    il IL_0000 ldarg.0
+    il IL_0001 ldarg.1
+    il IL_0002 stfld Fixtures.Widget::name
+    il IL_0007 ret
+  method 39 Compute sig=instance int32 (int32, int32) flags=0x0086 implflags=0x0000 rva=0x000024c1
+    maxstack 8 initlocals=false codesize=6
+    il IL_0000 ldarg.1
+    il IL_0001 ldarg.2
+    il IL_0002 mul
+    il IL_0003 ldc.i4.7
+    il IL_0004 add
+    il IL_0005 ret
+  method 40 get_Item sig=instance int32 (int32) flags=0x0886 implflags=0x0000 rva=0x000024c8
+    maxstack 8 initlocals=false codesize=4
+    il IL_0000 ldarg.1
+    il IL_0001 ldc.i4.2
+    il IL_0002 mul
+    il IL_0003 ret
+  method 41 ToString sig=instance string () flags=0x00c6 implflags=0x0000 rva=0x000024cd
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldfld Fixtures.Widget::name
+    il IL_0006 ret
+  method 42 .ctor sig=instance void () flags=0x1886 implflags=0x0000 rva=0x000024d5
+    maxstack 8 initlocals=false codesize=18
+    il IL_0000 ldarg.0
+    il IL_0001 ldstr "widget"
+    il IL_0006 stfld Fixtures.Widget::name
+    il IL_000b ldarg.0
+    il IL_000c call [netstandard]System.Object::.ctor
+    il IL_0011 ret
+  property 6 "Fixtures.INamed.Name" sig=instance string () flags=0x0000 getter=0x06000025 setter=0x00000000
+  property 7 "Item" sig=instance int32 (int32) flags=0x0000 getter=0x06000028 setter=0x00000000
+type 16 <PrivateImplementationDetails> flags=0x00000100 extends=[netstandard]System.Object
+  field 16 3B5B3F10D270E202A89E8E3258C236AD27D1D4A473F746D6BEFCF0EC07E24B77 sig=valuetype <PrivateImplementationDetails>/__StaticArrayInitTypeSize=6 flags=0x0133 rva=0x00003b80
+type 17 Fixtures.Container`1/Cursor flags=0x0010010a extends=[netstandard]System.ValueType
+  field 17 Index sig=int32 flags=0x0006
+type 18 <PrivateImplementationDetails>/__StaticArrayInitTypeSize=6 flags=0x00000115 extends=[netstandard]System.ValueType
+  layout size=6 pack=1
+type 19 Fixtures.Container`1/Cursor/State flags=0x00000102 extends=[netstandard]System.Enum
+  field 18 value__ sig=int32 flags=0x0606
+  field 19 Idle sig=valuetype Fixtures.Container`1/Cursor/State<!0> flags=0x8056
+  field 20 Moving sig=valuetype Fixtures.Container`1/Cursor/State<!0> flags=0x8056
+row InterfaceImpl 1 class=0x0200000f interface=0x0200000e
+row MemberRef 1 class=0x01000001 name=".ctor" sig=instance void (int32)
+row MemberRef 2 class=0x01000002 name=".ctor" sig=instance void ()
+row MemberRef 3 class=0x01000003 name=".ctor" sig=instance void (valuetype [netstandard]System.Diagnostics.DebuggableAttribute/DebuggingModes)
+row MemberRef 4 class=0x01000005 name=".ctor" sig=instance void (string)
+row MemberRef 5 class=0x01000007 name=".ctor" sig=instance void (valuetype [netstandard]System.Security.Permissions.SecurityAction)
+row MemberRef 6 class=0x01000008 name=".ctor" sig=instance void ()
+row MemberRef 7 class=0x01000009 name=".ctor" sig=instance void ()
+row MemberRef 8 class=0x0100000c name=".ctor" sig=instance void (valuetype [netstandard]System.AttributeTargets)
+row MemberRef 9 class=0x01000016 name=".ctor" sig=instance void (string)
+row MemberRef 10 class=0x0100000a name=".ctor" sig=instance void ()
+row MemberRef 11 class=0x1b000003 name="<Count>k__BackingField" sig=int32
+row MemberRef 12 class=0x1b000003 name="Added" sig=class [netstandard]System.EventHandler`1<!0>
+row MemberRef 13 class=0x01000018 name="Combine" sig=class [netstandard]System.Delegate (class [netstandard]System.Delegate, class [netstandard]System.Delegate)
+row MemberRef 14 class=0x01000019 name="CompareExchange" sig=!!0 <1>(!!0&, !!0, !!0)
+row MemberRef 15 class=0x01000018 name="Remove" sig=class [netstandard]System.Delegate (class [netstandard]System.Delegate, class [netstandard]System.Delegate)
+row MemberRef 16 class=0x1b000003 name="get_Count" sig=instance int32 ()
+row MemberRef 17 class=0x1b000003 name="items" sig=!0[]
+row MemberRef 18 class=0x0100001a name="Resize" sig=void <1>(!!0[]&, int32)
+row MemberRef 19 class=0x1b000003 name="set_Count" sig=instance void (int32)
+row MemberRef 20 class=0x1b000002 name="Invoke" sig=instance void (object, !0)
+row MemberRef 21 class=0x1b000005 name="Invoke" sig=instance !1 (!0)
+row MemberRef 22 class=0x0100000d name=".ctor" sig=instance void ()
+row MemberRef 23 class=0x1b000006 name="Get" sig=instance int32 (int32, int32)
+row MemberRef 24 class=0x0100001a name="GetLength" sig=instance int32 (int32)
+row MemberRef 25 class=0x1b000007 name=".ctor" sig=instance void (void*, int32)
+row MemberRef 26 class=0x1b000008 name=".ctor" sig=instance void (!0, !1, !2)
+row MemberRef 27 class=0x0100001b name=".ctor" sig=instance void (string)
+row MemberRef 28 class=0x0100001c name="get_ParamName" sig=instance string ()
+row MemberRef 29 class=0x0100001d name="op_Equality" sig=bool (string, string)
+row MemberRef 30 class=0x0100001f name="KeepAlive" sig=void (object)
+row MemberRef 31 class=0x0100000d name="ToString" sig=instance string ()
+row MemberRef 32 class=0x0100001d name="Empty" sig=string
+row MemberRef 33 class=0x01000020 name="Read" sig=int32 (int32&)
+row Constant 1 type=0x08 parent=0x0400000f value=07000000
+row Constant 2 type=0x08 parent=0x04000013 value=00000000
+row Constant 3 type=0x08 parent=0x04000014 value=01000000
+row Constant 4 type=0x08 parent=0x08000023 value=04000000
+row CustomAttribute 1 parent=0x09000001 ctor=0x06000002 value=5
+row CustomAttribute 2 parent=0x00000001 ctor=0x0a000006 value=4
+row CustomAttribute 3 parent=0x00000001 ctor=0x06000005 value=8
+row CustomAttribute 4 parent=0x14000001 ctor=0x06000003 value=10
+row CustomAttribute 5 parent=0x20000001 ctor=0x0a000001 value=8
+row CustomAttribute 6 parent=0x20000001 ctor=0x0a000002 value=30
+row CustomAttribute 7 parent=0x20000001 ctor=0x0a000003 value=8
+row CustomAttribute 8 parent=0x20000001 ctor=0x06000006 value=19
+row CustomAttribute 9 parent=0x20000001 ctor=0x0a000004 value=71
+row CustomAttribute 10 parent=0x2c000001 ctor=0x06000003 value=10
+row CustomAttribute 11 parent=0x02000002 ctor=0x0a000007 value=4
+row CustomAttribute 12 parent=0x02000002 ctor=0x06000001 value=4
+row CustomAttribute 13 parent=0x2a000002 ctor=0x06000002 value=5
+row CustomAttribute 14 parent=0x02000003 ctor=0x0a000007 value=4
+row CustomAttribute 15 parent=0x02000003 ctor=0x06000001 value=4
+row CustomAttribute 16 parent=0x02000003 ctor=0x0a000008 value=38
+row CustomAttribute 17 parent=0x2c000003 ctor=0x06000003 value=10
+row CustomAttribute 18 parent=0x04000004 ctor=0x0a000007 value=4
+row CustomAttribute 19 parent=0x02000004 ctor=0x0a000007 value=4
+row CustomAttribute 20 parent=0x02000004 ctor=0x06000001 value=4
+row CustomAttribute 21 parent=0x02000004 ctor=0x0a000008 value=38
+row CustomAttribute 22 parent=0x08000004 ctor=0x06000003 value=10
+row CustomAttribute 23 parent=0x04000005 ctor=0x0a000007 value=4
+row CustomAttribute 24 parent=0x02000005 ctor=0x0a000007 value=4
+row CustomAttribute 25 parent=0x02000005 ctor=0x06000001 value=4
+row CustomAttribute 26 parent=0x02000005 ctor=0x0a000008 value=38
+row CustomAttribute 27 parent=0x08000005 ctor=0x06000003 value=10
+row CustomAttribute 28 parent=0x2c000005 ctor=0x06000003 value=10
+row CustomAttribute 29 parent=0x04000006 ctor=0x06000003 value=10
+row CustomAttribute 30 parent=0x02000006 ctor=0x06000004 value=5
+row CustomAttribute 31 parent=0x02000006 ctor=0x06000002 value=5
+row CustomAttribute 32 parent=0x02000006 ctor=0x0a000008 value=25
+row CustomAttribute 33 parent=0x06000007 ctor=0x0a000007 value=4
+row CustomAttribute 34 parent=0x04000007 ctor=0x0a000007 value=4
+row CustomAttribute 35 parent=0x08000007 ctor=0x06000003 value=11
+row CustomAttribute 36 parent=0x06000008 ctor=0x0a000007 value=4
+row CustomAttribute 37 parent=0x04000008 ctor=0x06000003 value=10
+row CustomAttribute 38 parent=0x04000008 ctor=0x0a000007 value=4
+row CustomAttribute 39 parent=0x06000009 ctor=0x0a000007 value=4
+row CustomAttribute 40 parent=0x0600000a ctor=0x0a000007 value=4
+row CustomAttribute 41 parent=0x0600000b ctor=0x0a000007 value=4
+row CustomAttribute 42 parent=0x0600000c ctor=0x0a000007 value=4
+row CustomAttribute 43 parent=0x0600000d ctor=0x0a000007 value=4
+row CustomAttribute 44 parent=0x0200000e ctor=0x06000004 value=5
+row CustomAttribute 45 parent=0x0600000f ctor=0x06000004 value=5
+row CustomAttribute 46 parent=0x0200000f ctor=0x06000004 value=5
+row CustomAttribute 47 parent=0x0200000f ctor=0x06000002 value=5
+row CustomAttribute 48 parent=0x0200000f ctor=0x0a000009 value=9
+row CustomAttribute 49 parent=0x0200000f ctor=0x06000006 value=26
+row CustomAttribute 50 parent=0x02000010 ctor=0x0a000007 value=4
+row CustomAttribute 51 parent=0x06000012 ctor=0x06000004 value=5
+row CustomAttribute 52 parent=0x06000014 ctor=0x06000004 value=5
+row CustomAttribute 53 parent=0x06000016 ctor=0x06000004 value=5
+row CustomAttribute 54 parent=0x0600001d ctor=0x06000004 value=5
+row CustomAttribute 55 parent=0x0800001d ctor=0x06000002 value=5
+row CustomAttribute 56 parent=0x0600001e ctor=0x06000004 value=5
+row CustomAttribute 57 parent=0x06000020 ctor=0x06000004 value=5
+row CustomAttribute 58 parent=0x06000027 ctor=0x06000006 value=17
+row DeclSecurity 1 action=0x0008 parent=0x20000001 permission=161
+row StandAloneSig 1 len=20
+row StandAloneSig 2 len=3
+row StandAloneSig 3 len=7
+row StandAloneSig 4 len=4
+row StandAloneSig 5 len=5
+row StandAloneSig 6 len=4
+row StandAloneSig 7 len=7
+row StandAloneSig 8 len=3
+row MethodImpl 1 class=0x0200000f body=0x06000025 decl=0x06000023
+row MethodImpl 2 class=0x0200000f body=0x06000026 decl=0x06000024
+row ModuleRef 1 name="kernel32.dll"
+row TypeSpec 1 sig=class [netstandard]System.IComparable`1<!0>
+row TypeSpec 2 sig=class [netstandard]System.EventHandler`1<!0>
+row TypeSpec 3 sig=class Fixtures.Container`1<!0>
+row TypeSpec 4 sig=!0
+row TypeSpec 5 sig=class [netstandard]System.Func`2<!0, !!0>
+row TypeSpec 6 sig=int32[0...,0...]
+row TypeSpec 7 sig=valuetype [netstandard]System.ReadOnlySpan`1<uint8>
+row TypeSpec 8 sig=valuetype [netstandard]System.ValueTuple`3<int64, float32, float64>
+row TypeSpec 9 sig=!!0
+row Assembly 1 name="Features" version=0.0.0.0 flags=0x00000000 hashalg=0x00008004 culture="" publickey=0
+row AssemblyRef 1 name="netstandard" version=2.1.0.0 flags=0x00000000 culture="" publickey=8 hash=0
+row GenericParam 1 number=0 flags=0x0018 owner=0x02000007 name="T"
+row GenericParam 2 number=0 flags=0x0000 owner=0x0600000f name="TResult"
+row GenericParam 3 number=0 flags=0x0018 owner=0x02000011 name="T"
+row GenericParam 4 number=0 flags=0x0018 owner=0x02000013 name="T"
+row GenericParam 5 number=0 flags=0x0018 owner=0x06000021 name="T"
+row MethodSpec 1 method=0x0a00000e args=<class [netstandard]System.EventHandler`1<!0>>
+row MethodSpec 2 method=0x0a000012 args=<!0>
+row GenericParamConstraint 1 owner=0x2a000001 constraint=0x1b000001
+row GenericParamConstraint 2 owner=0x2a000001 constraint=0x0100000f
+row GenericParamConstraint 3 owner=0x2a000003 constraint=0x1b000001
+row GenericParamConstraint 4 owner=0x2a000003 constraint=0x0100000f
+row GenericParamConstraint 5 owner=0x2a000004 constraint=0x1b000001
+row GenericParamConstraint 6 owner=0x2a000004 constraint=0x0100000f
+row GenericParamConstraint 7 owner=0x2a000005 constraint=0x0100000f

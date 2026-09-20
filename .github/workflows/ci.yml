@@ -1,0 +1,157 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  lint:
+    name: fmt, clippy, doc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --all-targets --all-features -- -D warnings
+      - run: cargo doc --no-deps --all-features
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      # The smoke test walks a real CoreLib; installing the SDK is what makes
+      # it run rather than skip.
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: cargo test --all-features
+      - run: cargo test --release
+      - name: build without default features
+        run: cargo build --no-default-features
+
+  msrv:
+    name: MSRV 1.85
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.85
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --all-targets --all-features
+
+  wasm:
+    name: wasm32 check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --target wasm32-unknown-unknown
+      - run: cargo check --target wasm32-unknown-unknown --no-default-features
+
+  dependencies:
+    name: no required dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: assert the dependency tree is just this crate
+        run: |
+          tree="$(cargo tree --no-default-features --edges normal --prefix none)"
+          echo "$tree"
+          count="$(echo "$tree" | grep -c . )"
+          if [ "$count" -ne 1 ]; then
+            echo "expected no dependencies, got:"
+            echo "$tree"
+            exit 1
+          fi
+
+  differential:
+    name: differential vs System.Reflection.Metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      # Every assembly of every installed shared framework, dumped by both
+      # implementations and compared line by line.
+      - run: cargo test --release --test differential -- --nocapture
+        env:
+          CILDEC_DIFF_ALL: "1"
+      # Self-consistency over the same corpus: binary search against a scan,
+      # owner lookups against list ranges, coded indices round-tripped. Needs no
+      # reference reader, so it also runs in the plain test job.
+      - run: cargo test --release --test invariants -- --nocapture
+        env:
+          CILDEC_DIFF_ALL: "1"
+      - name: upload the dumps that differed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: differential-dumps
+          path: |
+            target/differential/dumps/*.actual.txt
+          if-no-files-found: ignore
+
+  fixtures:
+    name: fixtures are reproducible
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: regenerate the golden dumps and check they are unchanged
+        run: |
+          for name in Features IlFeatures; do
+            dotnet run --project tools/gen-golden -- "fixtures/$name.dll" > "/tmp/$name.txt"
+            diff -u "fixtures/golden/$name.txt" "/tmp/$name.txt"
+          done
+      - name: regenerate the opcode table and check it is unchanged
+        run: |
+          dotnet run --project tools/gen-opcodes > /tmp/table.rs
+          diff -u src/il/table.rs /tmp/table.rs
+
+  fuzz:
+    name: fuzz smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: Swatinem/rust-cache@v2
+      - name: install cargo-fuzz
+        run: cargo install cargo-fuzz --locked
+      # Short per-target runs: enough to catch a target that no longer builds or
+      # that fails on its own committed corpus. Long sessions run on a schedule.
+      - name: run each target briefly
+        run: fuzz/run-all.sh 60
+      - name: upload any crash artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-artifacts
+          path: fuzz/artifacts/

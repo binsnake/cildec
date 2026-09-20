@@ -1,0 +1,40 @@
+[package]
+name = "cildec"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+description = "Zero-dependency, panic-free decoder for ECMA-335 metadata and CIL method bodies"
+repository = "https://github.com/binsnake/cildec"
+documentation = "https://docs.rs/cildec"
+readme = "README.md"
+keywords = ["ecma-335", "cil", "metadata", "dotnet", "msil"]
+categories = ["parser-implementations", "development-tools::debugging", "no-std"]
+# Without a git repository cargo cannot consult .gitignore, so build output and
+# repository-only tooling are listed here. The fixtures and their golden dumps
+# do ship, so that `cargo test` works from the published package.
+exclude = [
+    "fuzz/",
+    "tools/",
+    "**/obj/",
+    "**/bin/",
+    "*.stackdump",
+    "examples/blob.rs",
+    "examples/corpus-pack.rs",
+    "examples/seed-corpus.rs",
+]
+
+[features]
+default = ["std"]
+std = []
+serde = ["dep:serde"]
+
+[dependencies]
+serde = { version = "1", optional = true, default-features = false, features = ["derive", "alloc"] }
+
+[profile.release]
+debug = true
+
+[lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"

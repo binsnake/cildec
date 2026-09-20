@@ -1,0 +1,288 @@
+image pe32plus=false machine=0x014c
+cli runtime=2.5 ilonly=true bit32required=false bit32preferred=false
+metadata version=v4.0.30319
+tablerows Module=1
+tablerows TypeRef=6
+tablerows TypeDef=2
+tablerows MethodDef=11
+tablerows MemberRef=4
+tablerows StandAloneSig=4
+tablerows Assembly=1
+tablerows AssemblyRef=1
+type 1 <Module> flags=0x00000000 extends=-
+type 2 IlFixtures.Features flags=0x00000181 extends=[System.Private.CoreLib]System.Object
+  method 1 VarargSum sig=vararg int32 (int32) flags=0x0016 implflags=0x0000 rva=0x00002050
+    maxstack 3 initlocals=true codesize=11
+    local 0 valuetype [System.Private.CoreLib]System.ArgIterator
+    il IL_0000 ldloca.s 0
+    il IL_0002 arglist
+    il IL_0004 call [System.Private.CoreLib]System.ArgIterator::.ctor
+    il IL_0009 ldarg.0
+    il IL_000a ret
+  method 2 CallVararg sig=int32 () flags=0x0016 implflags=0x0000 rva=0x00002067
+    maxstack 8 initlocals=false codesize=13
+    il IL_0000 ldc.i4.1
+    il IL_0001 ldc.i4.2
+    il IL_0002 ldstr "three"
+    il IL_0007 call IlFixtures.Features::VarargSum::VarargSum
+    il IL_000c ret
+  method 3 IndirectAdd sig=int32 (native int, int32, int32) flags=0x0016 implflags=0x0000 rva=0x00002075
+    maxstack 8 initlocals=false codesize=9
+    il IL_0000 ldarg.1
+    il IL_0001 ldarg.2
+    il IL_0002 ldarg.0
+    il IL_0003 calli StandAloneSig[1]
+    il IL_0008 ret
+  method 4 WithFault sig=int32 (int32) flags=0x0016 implflags=0x0000 rva=0x00002080
+    maxstack 2 initlocals=true codesize=14
+    local 0 int32
+    il IL_0000 ldarg.0
+    il IL_0001 ldc.i4.1
+    il IL_0002 add
+    il IL_0003 stloc.0
+    il IL_0004 leave IL_000c
+    il IL_0009 ldc.i4.m1
+    il IL_000a stloc.0
+    il IL_000b endfinally
+    il IL_000c ldloc.0
+    il IL_000d ret
+    eh Fault try=IL_0000..IL_0009 handler=IL_0009..IL_000c
+  method 5 NestedRegions sig=int32 (int32) flags=0x0016 implflags=0x0000 rva=0x000020ac
+    maxstack 2 initlocals=true codesize=51
+    local 0 int32
+    il IL_0000 ldarg.0
+    il IL_0001 stloc.0
+    il IL_0002 ldloc.0
+    il IL_0003 ldc.i4.0
+    il IL_0004 bge IL_000f
+    il IL_0009 newobj [System.Private.CoreLib]System.InvalidOperationException::.ctor
+    il IL_000e throw
+    il IL_000f leave IL_0027
+    il IL_0014 isinst [System.Private.CoreLib]System.InvalidOperationException
+    il IL_0019 ldnull
+    il IL_001a cgt.un
+    il IL_001c endfilter
+    il IL_001e pop
+    il IL_001f ldc.i4.s 42
+    il IL_0021 stloc.0
+    il IL_0022 leave IL_0027
+    il IL_0027 leave IL_0031
+    il IL_002c ldloc.0
+    il IL_002d ldc.i4.2
+    il IL_002e mul
+    il IL_002f stloc.0
+    il IL_0030 endfinally
+    il IL_0031 ldloc.0
+    il IL_0032 ret
+    eh Filter try=IL_0000..IL_0014 handler=IL_001e..IL_0027 filter=IL_0014
+    eh Finally try=IL_0000..IL_002c handler=IL_002c..IL_0031
+  method 6 TailCall sig=int32 (int32) flags=0x0016 implflags=0x0000 rva=0x00002108
+    maxstack 8 initlocals=false codesize=9
+    il IL_0000 ldarg.0
+    il IL_0001 tail.
+    il IL_0003 call [System.Private.CoreLib]System.Math::Abs
+    il IL_0008 ret
+  method 7 NoChecks sig=int32 (int32[], int32) flags=0x0016 implflags=0x0000 rva=0x00002112
+    maxstack 8 initlocals=false codesize=7
+    il IL_0000 ldarg.0
+    il IL_0001 ldarg.1
+    il IL_0002 no. 5
+    il IL_0005 ldelem.i4
+    il IL_0006 ret
+  method 8 Switch sig=int32 (int32) flags=0x0016 implflags=0x0000 rva=0x0000211c
+    maxstack 1 initlocals=true codesize=86
+    il IL_0000 ldarg.0
+    il IL_0001 switch (IL_002b,IL_002d,IL_0030,IL_0036,IL_003c,IL_0042,IL_0048,IL_004e)
+    il IL_0026 br IL_0054
+    il IL_002b ldc.i4.0
+    il IL_002c ret
+    il IL_002d ldc.i4.s 100
+    il IL_002f ret
+    il IL_0030 ldc.i4 200
+    il IL_0035 ret
+    il IL_0036 ldc.i4 300
+    il IL_003b ret
+    il IL_003c ldc.i4 400
+    il IL_0041 ret
+    il IL_0042 ldc.i4 500
+    il IL_0047 ret
+    il IL_0048 ldc.i4 600
+    il IL_004d ret
+    il IL_004e ldc.i4 700
+    il IL_0053 ret
+    il IL_0054 ldc.i4.m1
+    il IL_0055 ret
+  method 9 LoadConstants sig=void () flags=0x0016 implflags=0x0000 rva=0x00002180
+    maxstack 1 initlocals=true codesize=79
+    il IL_0000 ldc.i4.m1
+    il IL_0001 pop
+    il IL_0002 ldc.i4.0
+    il IL_0003 pop
+    il IL_0004 ldc.i4.1
+    il IL_0005 pop
+    il IL_0006 ldc.i4.2
+    il IL_0007 pop
+    il IL_0008 ldc.i4.3
+    il IL_0009 pop
+    il IL_000a ldc.i4.4
+    il IL_000b pop
+    il IL_000c ldc.i4.5
+    il IL_000d pop
+    il IL_000e ldc.i4.6
+    il IL_000f pop
+    il IL_0010 ldc.i4.7
+    il IL_0011 pop
+    il IL_0012 ldc.i4.8
+    il IL_0013 pop
+    il IL_0014 ldc.i4.s -128
+    il IL_0016 pop
+    il IL_0017 ldc.i4.s 127
+    il IL_0019 pop
+    il IL_001a ldc.i4 -2147483648
+    il IL_001f pop
+    il IL_0020 ldc.i4 2147483647
+    il IL_0025 pop
+    il IL_0026 ldc.i8 -9223372036854775808
+    il IL_002f pop
+    il IL_0030 ldc.r4 0xff800000
+    il IL_0035 pop
+    il IL_0036 ldc.r8 0x0000000000000001
+    il IL_003f pop
+    il IL_0040 ldnull
+    il IL_0041 pop
+    il IL_0042 ldstr "constant"
+    il IL_0047 pop
+    il IL_0048 ldtoken [System.Private.CoreLib]System.Int32
+    il IL_004d pop
+    il IL_004e ret
+  method 10 Conversions sig=void (int64) flags=0x0016 implflags=0x0000 rva=0x000021dc
+    maxstack 1 initlocals=true codesize=100
+    il IL_0000 ldarg.0
+    il IL_0001 conv.i1
+    il IL_0002 pop
+    il IL_0003 ldarg.0
+    il IL_0004 conv.i2
+    il IL_0005 pop
+    il IL_0006 ldarg.0
+    il IL_0007 conv.i4
+    il IL_0008 pop
+    il IL_0009 ldarg.0
+    il IL_000a conv.i8
+    il IL_000b pop
+    il IL_000c ldarg.0
+    il IL_000d conv.u1
+    il IL_000e pop
+    il IL_000f ldarg.0
+    il IL_0010 conv.u2
+    il IL_0011 pop
+    il IL_0012 ldarg.0
+    il IL_0013 conv.u4
+    il IL_0014 pop
+    il IL_0015 ldarg.0
+    il IL_0016 conv.u8
+    il IL_0017 pop
+    il IL_0018 ldarg.0
+    il IL_0019 conv.i
+    il IL_001a pop
+    il IL_001b ldarg.0
+    il IL_001c conv.u
+    il IL_001d pop
+    il IL_001e ldarg.0
+    il IL_001f conv.r4
+    il IL_0020 pop
+    il IL_0021 ldarg.0
+    il IL_0022 conv.r8
+    il IL_0023 pop
+    il IL_0024 ldarg.0
+    il IL_0025 conv.r.un
+    il IL_0026 pop
+    il IL_0027 ldarg.0
+    il IL_0028 conv.ovf.i1
+    il IL_0029 pop
+    il IL_002a ldarg.0
+    il IL_002b conv.ovf.i2
+    il IL_002c pop
+    il IL_002d ldarg.0
+    il IL_002e conv.ovf.i4
+    il IL_002f pop
+    il IL_0030 ldarg.0
+    il IL_0031 conv.ovf.i8
+    il IL_0032 pop
+    il IL_0033 ldarg.0
+    il IL_0034 conv.ovf.u1
+    il IL_0035 pop
+    il IL_0036 ldarg.0
+    il IL_0037 conv.ovf.u2
+    il IL_0038 pop
+    il IL_0039 ldarg.0
+    il IL_003a conv.ovf.u4
+    il IL_003b pop
+    il IL_003c ldarg.0
+    il IL_003d conv.ovf.u8
+    il IL_003e pop
+    il IL_003f ldarg.0
+    il IL_0040 conv.ovf.i
+    il IL_0041 pop
+    il IL_0042 ldarg.0
+    il IL_0043 conv.ovf.u
+    il IL_0044 pop
+    il IL_0045 ldarg.0
+    il IL_0046 conv.ovf.i1.un
+    il IL_0047 pop
+    il IL_0048 ldarg.0
+    il IL_0049 conv.ovf.i2.un
+    il IL_004a pop
+    il IL_004b ldarg.0
+    il IL_004c conv.ovf.i4.un
+    il IL_004d pop
+    il IL_004e ldarg.0
+    il IL_004f conv.ovf.i8.un
+    il IL_0050 pop
+    il IL_0051 ldarg.0
+    il IL_0052 conv.ovf.u1.un
+    il IL_0053 pop
+    il IL_0054 ldarg.0
+    il IL_0055 conv.ovf.u2.un
+    il IL_0056 pop
+    il IL_0057 ldarg.0
+    il IL_0058 conv.ovf.u4.un
+    il IL_0059 pop
+    il IL_005a ldarg.0
+    il IL_005b conv.ovf.u8.un
+    il IL_005c pop
+    il IL_005d ldarg.0
+    il IL_005e conv.ovf.i.un
+    il IL_005f pop
+    il IL_0060 ldarg.0
+    il IL_0061 conv.ovf.u.un
+    il IL_0062 pop
+    il IL_0063 ret
+  method 11 PointerOps sig=void (native int, native int, int32) flags=0x0016 implflags=0x0000 rva=0x0000224c
+    maxstack 3 initlocals=true codesize=23
+    il IL_0000 ldarg.0
+    il IL_0001 ldc.i4.7
+    il IL_0002 unaligned. 1
+    il IL_0005 volatile.
+    il IL_0007 stind.i4
+    il IL_0008 ldarg.0
+    il IL_0009 ldc.i4.0
+    il IL_000a ldarg.2
+    il IL_000b initblk
+    il IL_000d ldarg.0
+    il IL_000e ldarg.1
+    il IL_000f ldarg.2
+    il IL_0010 cpblk
+    il IL_0012 ldarg.2
+    il IL_0013 localloc
+    il IL_0015 pop
+    il IL_0016 ret
+row MemberRef 1 class=0x01000001 name=".ctor" sig=instance void (valuetype [System.Private.CoreLib]System.RuntimeArgumentHandle)
+row MemberRef 2 class=0x01000003 name=".ctor" sig=instance void ()
+row MemberRef 3 class=0x01000004 name="Abs" sig=int32 (int32)
+row MemberRef 4 class=0x06000001 name="VarargSum" sig=vararg int32 (int32, ..., int32, string)
+row StandAloneSig 1 len=5
+row StandAloneSig 2 len=4
+row StandAloneSig 3 len=3
+row StandAloneSig 4 len=3
+row Assembly 1 name="IlFeatures" version=1.0.0.0 flags=0x00000000 hashalg=0x00000000 culture="" publickey=0
+row AssemblyRef 1 name="System.Private.CoreLib" version=10.0.0.0 flags=0x00000001 culture="" publickey=160 hash=0

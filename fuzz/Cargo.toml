@@ -1,0 +1,52 @@
+[package]
+name = "cildec-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+rust-version = "1.85"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.cildec]
+path = ".."
+
+[[bin]]
+name = "pe"
+path = "fuzz_targets/pe.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "metadata"
+path = "fuzz_targets/metadata.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "body"
+path = "fuzz_targets/body.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "signature"
+path = "fuzz_targets/signature.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "il"
+path = "fuzz_targets/il.rs"
+test = false
+doc = false
+bench = false
+
+[workspace]

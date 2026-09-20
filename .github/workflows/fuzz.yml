@@ -1,0 +1,49 @@
+name: Fuzz
+
+# The long fuzzing sessions. CI runs a 60-second smoke per target on every pull
+# request; this runs each target for an hour, nightly, and files the corpus and
+# any crash it finds.
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      seconds:
+        description: Seconds per target
+        required: false
+        default: '3600'
+
+jobs:
+  fuzz:
+    name: fuzz ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [pe, metadata, body, signature, il]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo install cargo-fuzz --locked
+      - name: fuzz
+        working-directory: fuzz
+        run: |
+          cargo fuzz run ${{ matrix.target }} -- \
+            -max_total_time=${{ github.event.inputs.seconds || 3600 }} \
+            -rss_limit_mb=4096 \
+            -print_final_stats=1
+      - name: upload crash artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts-${{ matrix.target }}
+          path: fuzz/artifacts/${{ matrix.target }}/
+      - name: upload the grown corpus
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-${{ matrix.target }}
+          path: fuzz/corpus/${{ matrix.target }}/
+          retention-days: 7
