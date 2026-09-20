@@ -205,9 +205,7 @@ iteration in a path that affects output.
 
 ## License
 
-Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
-[MIT license](LICENSE-MIT) at your option.
+[MIT](LICENSE).
 
-Unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
-be dual licensed as above, without any additional terms or conditions.
+Unless you state otherwise, any contribution you intentionally submit for
+inclusion in this crate is licensed as above, with no additional terms.
